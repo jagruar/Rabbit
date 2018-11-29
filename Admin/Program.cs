@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using MessageBus;
+using RabbitMQ.Client.Events;
 
 namespace Admin
 {
@@ -8,26 +10,42 @@ namespace Admin
         static void Main(string[] args)
         {
             var id = new Random().Next(100);
-            var queue = "admin" + id;
-            Console.WriteLine("Subscribing...");
-            using(var mb = new RabbitMessagebus())
+            using (var mb = new RabbitMessagebus())
             {
-                mb.Subscribe(RabbitMessagebus._Admin, queue);
-            }
-            Console.WriteLine("Subscribed to Admin Exchange");
-
-            while (true)
-            {
-                Console.WriteLine("Where should your message be sent?");
-                var exchange = Console.ReadLine();
-                Console.WriteLine("Enter message:");
-                var message = Console.ReadLine();
-                using (var mb = new RabbitMessagebus())
+                mb.Subscribe(RabbitMessagebus._AdminExchange, RabbitMessagebus._AdminQueue + id, ClearCache);
+                mb.Subscribe(RabbitMessagebus._DirectExchange, RabbitMessagebus._AdminQueue, AlterDatabase);
+                while (true)
                 {
-                    mb.PublishAll(message, exchange);
+                    Console.WriteLine("Send to admin (a) or portal(p)?");
+                    var loc = Console.ReadLine();
+                    Console.WriteLine("Send to one(1) or many(2)?");
+                    var type = Console.ReadLine();
+                    if (type == "1")
+                    {
+                        var queue = loc == "a" ? RabbitMessagebus._AdminQueue : RabbitMessagebus._PortalQueue;
+                        mb.PublishOne(queue, "");
+                    }
+                    else
+                    {
+                        var exchange = loc == "a" ? RabbitMessagebus._AdminExchange : RabbitMessagebus._PortalExchange;
+                        mb.PublishAll("", exchange);
+                    }                    
+                    Console.ReadLine();
                 }
-                Console.WriteLine($"Sent {message} to {exchange}");
-            }            
+            }
+        }
+
+        public static void ClearCache(object sender, BasicDeliverEventArgs ea)
+        {
+            Console.WriteLine("I am clearing my cache");
+        }
+
+        public static void AlterDatabase(object sender, BasicDeliverEventArgs ea)
+        {
+            Console.WriteLine("Altering database...");
+            Thread.Sleep(2000);
+            Console.WriteLine("Database altered");
         }
     }
+}
 }
