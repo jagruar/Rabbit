@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Send", "Send\Send.csproj", "{5D4C4D32-01D3-480C-9714-884CE5B67558}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Send", "Send\Send.csproj", "{5D4C4D32-01D3-480C-9714-884CE5B67558}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receive", "Receive\Receive.csproj", "{195EBB9B-31C6-4AD1-9CFD-76A85BEDEBA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Receive", "Receive\Receive.csproj", "{195EBB9B-31C6-4AD1-9CFD-76A85BEDEBA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBus", "MessageBus\MessageBus.csproj", "{93D37E31-676E-4715-9808-B7589CADA099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageBus", "MessageBus\MessageBus.csproj", "{93D37E31-676E-4715-9808-B7589CADA099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{4E732722-52B2-483A-AE6E-B169C4FE200A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal", "Portal\Portal.csproj", "{4E732722-52B2-483A-AE6E-B169C4FE200A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{868B67A6-34AB-41BF-A0A4-6E4F69D7D14D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Admin", "Admin\Admin.csproj", "{868B67A6-34AB-41BF-A0A4-6E4F69D7D14D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{12D13804-ED7C-4955-A1AB-510240593666}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{12D13804-ED7C-4955-A1AB-510240593666}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fortress.AmqpMessagBus.Interfaces", "Fortress.AmqpMessagBus.Interfaces\Fortress.AmqpMessagBus.Interfaces.csproj", "{9423E78E-B6E3-4C81-B3BB-147395280E01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{12D13804-ED7C-4955-A1AB-510240593666}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12D13804-ED7C-4955-A1AB-510240593666}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12D13804-ED7C-4955-A1AB-510240593666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9423E78E-B6E3-4C81-B3BB-147395280E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9423E78E-B6E3-4C81-B3BB-147395280E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9423E78E-B6E3-4C81-B3BB-147395280E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9423E78E-B6E3-4C81-B3BB-147395280E01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
