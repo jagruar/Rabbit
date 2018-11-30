@@ -13,7 +13,7 @@ namespace Portal
             using (var mb = new RabbitMessagebus())
             {
                 mb.Subscribe(RabbitMessagebus._PortalExchange, RabbitMessagebus._PortalQueue + id, ClearCache);
-                mb.Subscribe(RabbitMessagebus._DirectExchange, RabbitMessagebus._PortalQueue, AlterDatabase);
+                mb.SubscribeAsWorker(RabbitMessagebus._PortalQueue, AlterDatabase);
                 while (true)
                 {
                     Console.WriteLine("Send to admin (a) or portal(p)?");
@@ -43,7 +43,13 @@ namespace Portal
         public static void AlterDatabase(object sender, BasicDeliverEventArgs ea)
         {
             Console.WriteLine("Altering database...");
-            Thread.Sleep(2000);
+            int i = 10;
+            while (i > 0)
+            {
+                Console.Write(i + ", ");
+                Thread.Sleep(1000);
+                i--;
+            }
             Console.WriteLine("Database altered");
         }
     }
